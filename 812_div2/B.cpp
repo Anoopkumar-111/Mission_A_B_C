@@ -12,25 +12,39 @@ void solve()
         cin>>a[i];
     }
 
+    // Will need minimum steps if array pattern is
+    // INCREASING
+    // DECREASING
+    // INCREASING then DECREASING
+
+    // will need more than MINIMUM is array is
+    // DECREASING then increasing
+
     for(int i=1;i<n;i++){
-        if(a[i]>a[i-1]){
+        // 6 7 8
+        if(a[i-1]<a[i]){
             if(dec==0){
                 inc=1;
             }
             else{
+                // 7 6 8 
+                // decrease then INcrease NOT ALLOWED
                 f=1;
                 break;
             }
         }
-        else if(a[i]<a[i-1]){
+        else if(a[i-1]>a[i]){
+            // 7 6 5
             dec=1;
         }
     }
 
-    if(f==0) cout<<"YES"<<endl;
-    else cout<<"NO"<<endl;
-
-
+    if(f){
+        cout<<"NO"<<endl;
+    }
+    else{
+        cout<<"YES"<<endl;
+    }
 }
 
 int main()
